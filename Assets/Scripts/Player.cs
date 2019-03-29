@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     float yMin;
     float yMax;
 
+    [SerializeField] int fuel = 100;
+
     void Start()
     {
         SetUpMoveBoundaries();
