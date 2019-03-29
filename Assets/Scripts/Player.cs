@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     }
     private void Die()
     {
-        //FindObjectOfType<GameSession>().LoadGameOver();
+        FindObjectOfType<SceneLoader>().LoadGameOverScene();
         Destroy(gameObject);
     }
     private void Fart()
