@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     float yMin;
     float yMax;
 
-    [SerializeField] int fuel = 100;
+    [SerializeField] private int fuel = 100;
 
     void Start()
     {
@@ -38,6 +38,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    public int GetFuel()
+    {
+        return fuel;
+    }
+
+    public void AddFuel(int fuel)
+    {
+        this.fuel += fuel;
+    }
+
+    public void RemoveFuel(int fuel)
+    {
+        this.fuel -= fuel;
+    }
+    private void Die()
+    {
+        //FindObjectOfType<GameSession>().LoadGameOver();
+        Destroy(gameObject);
+    }
     private void Fart()
     {
         GameObject explosion = Instantiate(jumpVFX, transform.position, transform.rotation);
