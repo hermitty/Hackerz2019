@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Food : MonoBehaviour
 {
-    [SerializeField] int damage = 10;
+    [SerializeField] int feed = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +16,10 @@ public class Obstacle : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Player>() == null) return;
-        collision.gameObject.GetComponent<Player>().RemoveFuel(damage);
+        collision.gameObject.GetComponent<Player>().AddFuel(feed);
         Destroy(gameObject);
     }
 }
