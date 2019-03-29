@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    [SerializeField] int damage = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<Player>().RemoveFuel(10);
+        collision.gameObject.GetComponent<Player>().RemoveFuel(damage);
         Destroy(gameObject);
     }
 }
