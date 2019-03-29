@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundaries();
+        StartCoroutine(AddPoints());
     }
 
 
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         {
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, jumpSpeed);
             Fart();
+            RemoveFuel(10);
         }
     }
 
@@ -85,5 +87,14 @@ public class Player : MonoBehaviour
         xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding;
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, -0.4f, 0)).y + padding;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 0.4f, 0)).y - padding;
+    }
+
+    IEnumerator AddPoints()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.1f);
+            FindObjectOfType<GameSession>().AddToScore(1);
+        }
     }
 }
